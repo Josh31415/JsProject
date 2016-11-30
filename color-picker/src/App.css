@@ -27,11 +27,13 @@
 
 .App-swatch-col-1 {
   background-color: blue;
+  color: white;
   padding: 20px;
 }
 
 .App-swatch-col-2 {
   background-color: green;
+  color: white;
   padding: 20px;
 }
 
