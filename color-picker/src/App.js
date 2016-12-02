@@ -4,7 +4,35 @@ import logo from './logo.png';
 import './App.css';
 
 class App extends Component {
-  render() {
+
+    constructor() {
+        super();
+        this.drawCanvas = this.drawCanvas.bind(this);
+    }
+    
+    drawCanvas() {
+        let ctx = this.refs.canvas.getDOMNode();
+        ctx.save();
+        ctx.clearRect(0, 0, 50,50);
+        ctx.fillStyle = 'rgb(red,green,blue)';
+        ctx.refresh();
+        ctx.getDOMNode();
+    }
+       
+    changeRed(event){
+        red = {value: event.target.value};
+    }
+    
+    changeGreen(event){ 
+        green = {value: event.target.value}; 
+    }
+        
+    changeBlue(event){
+        blue = {value: event.target.value};
+    }
+
+    render() {
+
     return (
       <div className="App">
         <div className="App-header">
@@ -35,6 +63,7 @@ class App extends Component {
               <input type="text" name="hex" />
           </label>
           <input type="Submit" value="Pick!" />
+            <canvas ref="canvas" draw={this.drawCanvas} width={400} height={400} realtime={true} className="App-ColorCanvas"></canvas>
         </form>
       </div>
     );
