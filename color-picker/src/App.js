@@ -3,6 +3,10 @@ import {Grid, Row, Col} from 'react-bootstrap';
 import logo from './logo.png';
 import './App.css';
 
+let red = 50;
+let green = 50;
+let blue = 50;
+
 class App extends Component {
 
     constructor() {
@@ -59,8 +63,9 @@ class App extends Component {
             <option value="RGB">RGB</option>
           </select>
           <label>
-
-              <input type="text" name="hex" />
+                <input type="text" name="Red" style={{color: 'red'}} Width={50} onChange={this.changeRed} />
+                <input type="text" name="Green" style={{color: 'green'}} onChange={this.changeGreen} />
+                <input type="text" name="Blue" style={{color: 'blue'}} onChange={this.changeBlue} />
           </label>
           <input type="Submit" value="Pick!" />
             <canvas ref="canvas" draw={this.drawCanvas} width={400} height={400} realtime={true} className="App-ColorCanvas"></canvas>
