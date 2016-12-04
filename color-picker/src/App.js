@@ -21,16 +21,60 @@ function SubmitButton() {
 }
 
 class SwatchPicker extends Component {
+  constructor() {
+    super();
+    this.state ={
+      shadows: Array(5).fill(0)
+    }
+  }
+
+  changeSelected(value) {
+    const shadows = this.state.shadows.slice();
+    // Only show a shadow on the selected Swatch
+    for (let i = 0; i < shadows.length; i++) {
+      if (i===value) {
+        shadows[i]=5
+      }else{
+        shadows[i]=0
+      }
+    }
+    this.setState({shadows: shadows});
+  }
+
+  renderSwatch(className, value, text) {
+    if (this.state.shadows[value]===0) {
+      //Return a Cell without a shadow property to work around a known bug with shadow={0} (see issue #364)
+      return(
+        <Cell
+          className={className}
+          col={1.5}
+          onClick={() => {this.changeSelected(value)}}>
+          {text}
+        </Cell>
+      )
+    }else{
+      return(
+        <Cell 
+          className={className}
+          col={1.5} 
+          shadow={this.state.shadows[value]}
+          onClick={() => {this.changeSelected(value)}}>
+            {text}
+        </Cell>
+      )
+    }
+  }
+
   render() {
     return (
       <div>
         <h3>Pick your favorite swatch</h3>
         <Grid>
-          <Cell className="App-swatch-col-1" col={1.5} shadow={2}>Material Blue 500</Cell>
-          <Cell className="App-swatch-col-2" col={1.5} shadow={2}>Material Green 500</Cell>
-          <Cell className="App-swatch-col-3" col={1.5} shadow={2}>Material Yellow 500</Cell>
-          <Cell className="App-swatch-col-4" col={1.5} shadow={2}>Material Orange 500</Cell>
-          <Cell className="App-swatch-col-5" col={1.5} shadow={2}>Material Red 500</Cell>
+          {this.renderSwatch("App-swatch-col-1", 0, "Material Blue 500")}
+          {this.renderSwatch("App-swatch-col-2", 1, "Material Green 500")}
+          {this.renderSwatch("App-swatch-col-3", 2, "Material Yellow 500")}
+          {this.renderSwatch("App-swatch-col-4", 3, "Material Orange 500")}
+          {this.renderSwatch("App-swatch-col-5", 4, "Material Red 500")}
         </Grid>
         <SubmitButton/>
       </div>

@@ -19,27 +19,32 @@
 .App-swatch-col-1 {
   background-color: #2196F3;
   color: white;
+  cursor: pointer;
   padding: 20px;
 }
 
 .App-swatch-col-2 {
   background-color: #4CAF50;
   color: white;
+  cursor: pointer;
   padding: 20px;
 }
 
 .App-swatch-col-3 {
   background-color: #FFEB3B;
+  cursor: pointer;
   padding: 20px;
 }
 
 .App-swatch-col-4 {
   background-color: #FF9800;
+  cursor: pointer;
   padding: 20px;
 }
 
 .App-swatch-col-5 {
   background-color: #F44336;
+  cursor: pointer;
   padding: 20px;
 }
 
