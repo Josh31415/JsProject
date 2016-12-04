@@ -15,15 +15,6 @@
   color: white;
 }
 
-.App-intro {
-  font-size: large;
-}
-
-.App-swatch-grid {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
 
 .App-swatch-col-1 {
   background-color: blue;
@@ -50,6 +41,11 @@
 .App-swatch-col-5 {
   background-color: red;
   padding: 20px;
+}
+
+.App-left-right-padding {
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 @keyframes App-logo-spin {
