@@ -14,11 +14,11 @@ class App extends Component {
           <div className="App-converter">
             <h3>Pick your favorite swatch</h3>
             <Grid>
-              <Cell className="App-swatch-col-1" col={1.5} shadow={2} >#0000ff</Cell>
-              <Cell className="App-swatch-col-2" col={1.5} shadow={2}>#008000</Cell>
-              <Cell className="App-swatch-col-3" col={1.5} shadow={2}>#ffff00</Cell>
-              <Cell className="App-swatch-col-4" col={1.5} shadow={2}>#ffa500</Cell>
-              <Cell className="App-swatch-col-5" col={1.5} shadow={2}>#ff0000</Cell>
+              <Cell className="App-swatch-col-1" col={1.5} shadow={2}>Material Blue 500</Cell>
+              <Cell className="App-swatch-col-2" col={1.5} shadow={2}>Material Green 500</Cell>
+              <Cell className="App-swatch-col-3" col={1.5} shadow={2}>Material Yellow 500</Cell>
+              <Cell className="App-swatch-col-4" col={1.5} shadow={2}>Material Orange 500</Cell>
+              <Cell className="App-swatch-col-5" col={1.5} shadow={2}>Material Red 500</Cell>
             </Grid>
           </div>
           <p>
