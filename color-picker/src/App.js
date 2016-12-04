@@ -12,18 +12,11 @@ function Header() {
   )
 }
 
-function SubmitButton() {
-  return (
-    <p>
-      <Button raised accent ripple>Pick</Button>
-    </p>
-  )
-}
-
 class SwatchPicker extends Component {
   constructor() {
     super();
     this.state ={
+      swatchSelected: false,
       shadows: Array(5).fill(0)
     }
   }
@@ -38,7 +31,7 @@ class SwatchPicker extends Component {
         shadows[i]=0
       }
     }
-    this.setState({shadows: shadows});
+    this.setState({swatchSelected: true, shadows: shadows});
   }
 
   renderSwatch(className, value, text) {
@@ -65,6 +58,18 @@ class SwatchPicker extends Component {
     }
   }
 
+  renderSubmitButton() {
+    if (this.state.swatchSelected===true) {
+      return (
+        <Button raised primary ripple>Pick</Button>
+      )
+    }else{
+      return (
+        <Button raised primary ripple disabled>Pick</Button>
+      )
+    }
+  }
+
   render() {
     return (
       <div>
@@ -76,13 +81,35 @@ class SwatchPicker extends Component {
           {this.renderSwatch("App-swatch-col-4", 3, "Material Orange 500")}
           {this.renderSwatch("App-swatch-col-5", 4, "Material Red 500")}
         </Grid>
-        <SubmitButton/>
+        {this.renderSubmitButton()}
       </div>
     )
   }
 }
 
 class ColorCodePicker extends Component {
+  constructor() {
+    super();
+    this.state = {
+      colorValid: false
+    }
+  }
+  renderSubmitButton() {
+    if (this.state.colorValid===true) {
+      return (
+        <p>
+          <Button raised primary ripple>Pick</Button>
+        </p>
+      )
+    }else{
+      return (
+        <p>
+          <Button raised primary ripple disabled>Pick</Button>
+        </p>
+      )
+    }
+  }
+
   render() {
     return (
       <div>
@@ -92,7 +119,7 @@ class ColorCodePicker extends Component {
           <Radio value="opt2">RGB</Radio>
         </RadioGroup>
         <Textfield name="hex" label="Enter color value" floatingLabel/>
-        <SubmitButton/>
+        {this.renderSubmitButton()}
       </div>
     )
   }
