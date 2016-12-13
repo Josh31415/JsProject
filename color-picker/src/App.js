@@ -91,9 +91,36 @@ class ColorCodePicker extends Component {
   constructor() {
     super();
     this.state = {
-      colorValid: false
+      colorValid: false,
+      inputType: 0, //0 = Hex, 1 = RGB
     }
   }
+  
+  renderTextField() {
+    let label;
+    let pattern;
+    let error;
+
+    if (this.state.inputType===0) {
+        label = "Enter hex value (e.g. #FFFFFF)"
+        pattern = "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"
+        error = "Not a valid hex code"
+    } else {
+        label = "Enter RGB value (e.g. 255,255,255)"
+        pattern= "((?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\s?,\\s?){2}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))"
+        error = "Not a valid RGB code"
+    }
+
+    return (
+      <Textfield 
+          id="color_input"
+          label={label}
+          pattern={pattern}
+          error={error} 
+          floatingLabel/>
+    )
+  }
+
   renderSubmitButton() {
     if (this.state.colorValid===true) {
       return (
@@ -114,11 +141,11 @@ class ColorCodePicker extends Component {
     return (
       <div>
         <h3>Enter a color code</h3>
-        <RadioGroup name="demo" value="opt1" >
-          <Radio className="App-left-right-padding" value="opt1">Hex</Radio>
-          <Radio value="opt2">RGB</Radio>
+        <RadioGroup name="colorgroup" value="opt1" >
+          <Radio className="App-left-right-padding" value="opt1" onClick={() => {this.setState({inputType: 0})}}>Hex</Radio>
+          <Radio value="opt2" onClick={() => {this.setState({inputType: 1})}}>RGB</Radio>
         </RadioGroup>
-        <Textfield name="hex" label="Enter color value" floatingLabel/>
+        {this.renderTextField()}
         {this.renderSubmitButton()}
       </div>
     )
