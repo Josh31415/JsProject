@@ -5,10 +5,9 @@ import './App.css';
 
 function searchGit(q) {
   fetch("https://api.github.com/search/repositories?q=" + q).then(function(response) {
-    console.log(q);
     return response.json();
   }).then(function(j) {
-    alert(j.total_count + " Git repositories use this color.");
+    return j.total_count + " Git repositories use this color.";
   }).catch(function(err) {
     return "Error"
   });
